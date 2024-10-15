@@ -1,4 +1,4 @@
-package main.java.team5.database.security;
+package team5.database.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -28,8 +28,8 @@ public class Sample3AuthConfiguration {
             .logoutUrl("/logout")
             .logoutSuccessUrl("/")) // ログアウト後に / にリダイレクト
         .authorizeHttpRequests(authz -> authz
-            .requestMatchers(AntPathRequestMatcher.antMatcher("/sample3/**"))
-            .authenticated() // /sample3/以下は認証済みであること
+            // .requestMatchers(AntPathRequestMatcher.antMatcher("/sample3/**"))
+            // .authenticated() // /sample3/以下は認証済みであること
             .requestMatchers(AntPathRequestMatcher.antMatcher("/sample4/**"))
             .authenticated() // /sample4/以下は認証済みであること
             .requestMatchers(AntPathRequestMatcher.antMatcher("/**"))
@@ -54,10 +54,10 @@ public class Sample3AuthConfiguration {
     // このときパスワードはBCryptでハッシュ化されているため，{bcrypt}とつける
     // ハッシュ化せずに平文でパスワードを指定する場合は{noop}をつける
     // user1/p@ss,user2/p@ss,admin/p@ss
-    UserDetails user1 = User.withUsername("user1")
-        .password("{bcrypt}$2y$05$VA0TwC44qL5fgjxZgJvZMeG6CPq5BzyXetglYZNm.6qiCCYbfemQq").roles("USER").build();
-    UserDetails user2 = User.withUsername("user2")
-        .password("{bcrypt}$2y$10$ngxCDmuVK1TaGchiYQfJ1OAKkd64IH6skGsNw1sLabrTICOHPxC0e").roles("USER").build();
+    UserDetails user1 = User.withUsername("yuki")
+        .password("{bcrypt}$2y$05$qiXjjIdQYeQV.ESjkHIDbeHcK0hDF7eOk0Tu5PXIKzTCNBZseIOzO").roles("USER").build();
+    UserDetails user2 = User.withUsername("akira")
+        .password("{bcrypt}$2y$05$fu1GcF1xM4wku8Gg8iLRQuaR65vBXhg/vRxlvkDAE68KWy6gaBpOm").roles("USER").build();
     UserDetails admin = User.withUsername("admin")
         .password("{bcrypt}$2y$10$ngxCDmuVK1TaGchiYQfJ1OAKkd64IH6skGsNw1sLabrTICOHPxC0e").roles("ADMIN").build();
 
