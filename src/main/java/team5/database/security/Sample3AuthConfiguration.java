@@ -1,4 +1,4 @@
-package team5.database.security;
+package main.java.team5.database.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
